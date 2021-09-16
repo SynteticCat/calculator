@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import cn from 'classnames';
 import classes from './calculator.module.scss';
 
 const OperationResolver = {
@@ -16,14 +17,14 @@ const OperationResolverByKey = {
 };
 
 function isValidNumeric(str) {
-    const reg = /^[+-]?([1-9]\d*|0)([\.\,]\d+)?(e[+-]\d+)?$/;
+    const reg = /^[+-]?([1-9]\d*|0)([\.\,]\d+)?(e[+-]?\d+)?$/;
     return reg.test(str);
 }
 
 function isValidNumericPart(str) {
     return /^[+-]?$/.test(str)
         || /^[+-]?([1-9]\d*|0)[\.\,]?$/.test(str)
-        || /^[+-]?([1-9]\d*|0)([\.\,]\d+)?(e|e[+-])?$/.test(str)
+        || /^[+-]?([1-9]\d*|0)([\.\,]\d+)?(e|e[+-]?)?$/.test(str)
 }
 
 export const Calculator = () => {
@@ -80,7 +81,7 @@ export const Calculator = () => {
     }
 
     return (
-        <div className={`box ${classes.calculator} ${isValidNumeric(inputValue) ? classes.successInput : ''}`}>
+        <div className={cn('box', classes.calculator, { [classes.successInput]: isValidNumeric(inputValue) })}>
             <label htmlFor="calculator-input" className={classes.calculatorLabel}>
                 Value:
             </label>
