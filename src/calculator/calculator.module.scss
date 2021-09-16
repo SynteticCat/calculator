@@ -1,0 +1,48 @@
+.calculator {
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    width: 300px;
+    transition-duration: .3s;
+
+    &.successInput {
+        box-shadow: 
+            0 2px 3px dodgerblue,
+            0 0 0 1px dodgerblue;
+    }
+
+    label.calculatorLabel {
+        align-self: flex-start;
+        cursor: pointer;
+    }
+
+    input.calculatorInput {
+        font-size: 1.25rem;
+        outline: none;
+    }
+
+    .buttonGroup {
+        display: flex;
+        margin-top: 1.25rem;
+        column-gap: 1.25rem;
+        transition-duration: .3s;
+    
+        &[disabled] {
+            pointer-events: none;
+            opacity: .3;
+        }
+    
+        button {
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 3px;
+            background-color: dodgerblue;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+        }
+    }
+}
